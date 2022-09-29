@@ -1,0 +1,87 @@
+package com.acme.hotel_world_api.sales.domain.model;
+
+import java.util.List;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import com.acme.hotel_world_api.system.domain.model.Hotel;
+
+@Entity
+@Table(name = "products")
+public class Product {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotNull
+    private String name;
+
+    @NotNull
+    private Float price;
+
+    //relation
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "products")
+    private List<Hotel> hotels;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "products_tags", 
+    joinColumns = {@JoinColumn(name = "product_id")}, 
+    inverseJoinColumns = {@JoinColumn(name = "tag_id")})
+    private List<Tag> tags;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "products")
+    private List<Sale> sales;
+
+    //getters setters
+    public Long getId(){
+        return id;
+    }
+
+    public Product setId(Long id){
+        this.id=id;
+        return this;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public Product setName(String name){
+        this.name = name;
+        return this;
+    }
+
+    public Float getPrice(){
+        return price;
+    }
+
+    public Product setPrice(Float price){
+        this.price=price;
+        return this;
+    }
+
+    public List<Tag> getTags(){
+        return tags;
+    }
+
+    //bussiness logic
+    public boolean isTaggedWith(Tag tag){
+        return this.getTags().contains(tag);
+    }
+
+    public Product tagWith(Tag tag){
+         if(!isTaggedWith(tag)){
+             this.getTags().add(tag);
+         }
+         return this;
+    }
+
+    public Product unTagWith(Tag tag){
+        if(this.isTaggedWith(tag)){
+            this.getTags().remove(tag);
+        }
+        return this;
+    }
+}
