@@ -20,14 +20,6 @@ pipeline{
             }
             }
         }
-        stage ('Deployment Stage') {
-            steps{
-
-            withMaven(maven: '3.8.6') {
-                bat 'mvn deploy -DaltDeploymentRepository=internal.repo::default::file:///https://github.com/GiulianoMendez/Test/tree/main/untitled'
-            }
-            }
-        }
         
     }
 }
