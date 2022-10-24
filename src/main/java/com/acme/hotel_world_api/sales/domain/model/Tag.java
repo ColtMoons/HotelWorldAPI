@@ -55,5 +55,10 @@ public class Tag{
     public List<Product> getProducts(){
         return products;
     }
+    
+    public Tag setProducts(List<Product> products){
+        this.products = products;
+        return this;
+    }
 
 }

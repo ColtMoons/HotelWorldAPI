@@ -1,4 +1,4 @@
-package com.acme.hotel_world_api.security.HotelAdmin;
+package com.acme.hotel_world_api.security.hotelAdmin;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
