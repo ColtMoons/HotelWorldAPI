@@ -47,7 +47,7 @@ public class Chat extends AuditModel{
     }
 
     public Chat setAdmin(HotelAdmin admin){
-        this.admin = admin;
+        this.admin = admin;;
         return this;
     }
 
