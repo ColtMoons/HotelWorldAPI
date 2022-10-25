@@ -19,7 +19,7 @@ public class Product {
     private String name;
 
     @NotNull
-    private Float price;
+    private Double price;
 
     //relation
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "products")
@@ -53,18 +53,38 @@ public class Product {
         return this;
     }
 
-    public Float getPrice(){
+    public Double getPrice(){
         return price;
     }
 
-    public Product setPrice(Float price){
+    public Product setPrice(Double price){
         this.price=price;
         return this;
     }
+    public Product setTags(List<Tag> tags){
+        this.tags = tags;
+        return this;
+    }
 
+    public Product setHotels(List<Hotel> hotels){
+        this.hotels = hotels;
+        return this;
+    }
+
+    public Product setSales(List<Sale> sales){
+        this.sales = sales;
+        return this;
+    }
     public List<Tag> getTags(){
         return tags;
     }
+    public List<Hotel> getHotels(){
+        return hotels;
+    }
+    public List<Sale> getSales(){
+        return sales;
+    }
+
 
     //bussiness logic
     public boolean isTaggedWith(Tag tag){
