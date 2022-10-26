@@ -25,6 +25,11 @@ public class ChatServiceImpl implements ChatService {
 
     @Autowired
     private GuestRepository guestRepository;
+    
+    @Override
+    public Chat getChatById(Long chatId) {
+        return chatRepository.findById(chatId).orElseThrow(()-> new ResourceNotFoundException("Chat", "ID", chatId));
+    }
 
     @Override
     public Page<Chat> getAllChatsByGuestId(Long guestId, Pageable pageable) {
