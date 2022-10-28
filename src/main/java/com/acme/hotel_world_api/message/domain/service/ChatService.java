@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import com.acme.hotel_world_api.message.domain.model.Chat;
 
 public interface ChatService {
+    Chat getChatById(Long chatId);
     Page<Chat> getAllChatsByGuestId(Long guestId, Pageable pageable);
     Page<Chat> getAllChatsByAdminId(Long adminId, Pageable pageable);
     
