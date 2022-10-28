@@ -28,6 +28,11 @@ public class ReservationServiceImpl implements ReservationService{
 
 
     @Override
+    public Reservation getReservationById(Long reservationId) {
+        return reservationRepository.findById(reservationId).orElseThrow(()-> new ResourceNotFoundException("Reservation", "ID", reservationId));
+    }
+    
+    @Override
     public Page<Reservation> getAllReservationByGuestId(Long guestId, Pageable pageable) {
         return reservationRepository.findByGuestId(guestId, pageable);
     }

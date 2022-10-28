@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import com.acme.hotel_world_api.reservation.domain.model.Reservation;
 
 public interface ReservationService {
+    Reservation getReservationById(Long reservationId);
     Page<Reservation> getAllReservationByGuestId(Long guestId, Pageable pageable);
     Page<Reservation> getAllReservationByRoomId(Long roomId, Pageable pageable);
     
