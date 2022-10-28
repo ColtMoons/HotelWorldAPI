@@ -40,7 +40,7 @@ public class reservationServiceImplTest {
     public void setUp(){
         reservation = new Reservation();
         reservation.setId(2L)
-                .setDate(new Date("2022-05-04"))
+                .setDate(new Date())
                 .setGuest(new Guest())
                 .setRoom(new Room());
     }

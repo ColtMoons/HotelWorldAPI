@@ -21,15 +21,18 @@ public class reservationTest {
     @DisplayName("Valid that reservation")
     public void reservation(){
         reservation = new Reservation();
+        Date date = new Date();
+        Guest guest = new Guest();
+        Room room = new Room();
         reservation.setId(2L)
-                .setDate(new Date("2022-05-04"))
-                .setGuest(new Guest())
-                .setRoom(new Room());
+                .setDate(date)
+                .setGuest(guest)
+                .setRoom(room);
 
         assertEquals(2L, reservation.getId());
-        assertEquals(2L, reservation.getDate());
-        assertEquals(new Guest(), reservation.getGuest());
-        assertEquals(new Room(), reservation.getRoom());
+        assertEquals(date, reservation.getDate());
+        assertEquals(guest, reservation.getGuest());
+        assertEquals(room, reservation.getRoom());
 
 
     }

@@ -18,13 +18,16 @@ public class chatTest {
     @DisplayName("Valid That Chat")
     public void chat(){
         chat = new Chat();
+        Guest guest = new Guest();
+        HotelAdmin hotelAdmin = new HotelAdmin();
+
         chat.setId(3L)
-                .setAdmin(new HotelAdmin())
-                .setGuest(new Guest());
+                .setAdmin(hotelAdmin)
+                .setGuest(guest);
 
         assertEquals(3L, chat.getId());
-        assertEquals(new HotelAdmin(), chat.getAdmin());
-        assertEquals(new Guest(), chat.getGuest());
+        assertEquals(hotelAdmin, chat.getAdmin());
+        assertEquals(guest, chat.getGuest());
     }
 
 }

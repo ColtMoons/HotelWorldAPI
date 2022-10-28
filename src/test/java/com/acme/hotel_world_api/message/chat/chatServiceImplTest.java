@@ -50,14 +50,14 @@ public class chatServiceImplTest {
 
         Chat response = chatServiceImpl.getChatById(3L);
 
-        assertEquals(13L, response.getId());
+        assertEquals(3L, response.getId());
     }
 
     @Test
     @DisplayName("When Find By Id But Not Exist")
     public void WhenFindByIdButNotExist(){
         when(chatRepository.findById(3L)).thenReturn(Optional.of(chat));
-        String message = "Resource Hotel not found for ID with value 35";
+        String message = "Resource Chat not found for ID with value 35";
 
         Throwable exception = catchThrowable(()->{
             chatServiceImpl.getChatById(35L);
